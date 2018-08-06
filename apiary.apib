@@ -1,15 +1,60 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: http://localhost:8080/turneroWeb
 
 # TurneroMobile
 
 Requerimiento Turnero y Cupón a través de Mobile
 
-## Estado de Turnero  [/turnero/getStatus]
+## Estado de Turnero  [/getStatusTienda]
+
+### Obtener estado [POST]
+
+Servicio permite obtener el estado de Atención de la Tienda solicitada
+
+#### Parametros de Entrada 
+
+Local : de largo de 4 digitos
+
+#### Parametros de Salida 
+
+Respuesta : Objeto con propiedades codigo y mensaje. Si el codigo es distinto de OK, se debe suponer que el mensaje 
+es un error controlado por la aplicación
+
+Status : ABIERTA / CERRADA
+
++ Request (application/json)
+
+        {
+            "local": "Identificacion del local"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "respuesta": {
+                "codigo": "OK",
+                "mensaje": "STATUS OK"
+            },
+            "status": "ACTIVO"
+        }
+
+
+## Estado de Turnero  [/getStatus]
 
 ### Obtener estado [POST]
 
 Servicio permite obtener el estado del Turnero del local solicitado
+
+#### Parametros de Entrada 
+
+Local : de largo de 4 digitos
+
+#### Parametros de Salida 
+
+Respuesta : Objeto con propiedades codigo y mensaje. Si el codigo es distinto de OK, se debe suponer que el mensaje 
+es un error controlado por la aplicación
+
+Status : ACTIVO / NO_ACTIVO
 
 + Request (application/json)
 
@@ -28,11 +73,22 @@ Servicio permite obtener el estado del Turnero del local solicitado
         }
         
 
-## Número de Atención [/turnero/getNumeroAtencion]
+## Número de Atención [/getNumeroAtencion]
 
 ### Obtener Número de Atención [POST]
 
 Servicio permite obtener un número de Atención del local solicitado
+
+#### Parametros de Entrada 
+
+Local : de largo de 4 digitos
+rutCliente : sin formato (sin puntos ni guiones)
+
+#### Parametros de Salida 
+
+Respuesta : Objeto con propiedades código y mensaje. Si el codigo es distinto de OK, se debe suponer que el mensaje 
+es un error controlado por la aplicación
+numeroAtencion : Número de Atención entregado por el negocio al cliente que lo solicita
 
 + Request (application/json)
 
@@ -48,14 +104,25 @@ Servicio permite obtener un número de Atención del local solicitado
                 "codigo": "OK",
                 "mensaje": "NUMERO ATENCION OK"
             },
-            "numeroAtención": "V0001"
+            "numeroAtencion": "V0001"
         }
 
-## Reactivar Número de Atención [/turnero/setReactivarNumeroAtencion]
+## Reactivar Número de Atención [/setReactivarNumeroAtencion]
 
 ### Reactivar Número de Atención [POST]
 
 Servicio permite reactivar un número de Atención solicitado con anterioridad por el cliente
+
+#### Parametros de Entrada 
+
+Local : de largo de 4 digitos
+rutCliente : sin formato (sin puntos ni guiones)
+
+#### Parametros de Salida 
+
+Respuesta : Objeto con propiedades código y mensaje. Si el codigo es distinto de OK, se debe suponer que el mensaje 
+es un error controlado por la aplicación
+numeroAtencion : Número de Atención 
 
 + Request (application/json)
 
@@ -74,11 +141,23 @@ Servicio permite reactivar un número de Atención solicitado con anterioridad p
             "numeroAtención": "V0001"
         }
 
-## Cancelar Número de Atención [/turnero/setCancelarNumeroAtencion]
+## Cancelar Número de Atención [/setCancelarNumeroAtencion]
 
 ### Cancelar Número de Atención [POST]
 
 Servicio permite cancelar un número de Atención solicitado con anterioridad por el cliente
+
+#### Parametros de Entrada 
+
+Local : de largo de 4 digitos
+rutCliente : sin formato (sin puntos ni guiones)
+numeroAtencion : Número de Atención entregado previamente por la aplicación 
+
+#### Parametros de Salida 
+
+Respuesta : Objeto con propiedades código y mensaje. Si el codigo es distinto de OK, se debe suponer que el mensaje 
+es un error controlado por la aplicación
+
 
 + Request (application/json)
 
@@ -94,6 +173,81 @@ Servicio permite cancelar un número de Atención solicitado con anterioridad po
             "respuesta": {
                 "codigo": "OK",
                 "mensaje": "NUMERO ATENCION CANCELADO OK"
-            },
-            "numeroAtención": "V0001"
+            }
+        }
+        
+        
+## Cancelar Número de Atención [/getCupones]
+
+### Cancelar Número de Atención [POST]
+
+Servicio permite solicitar un listado con los cupones disponibles por el Cliente
+
+#### Parametros de Entrada 
+
+rutCliente : sin formato (sin puntos ni guiones)
+
+#### Parametros de Salida 
+
+Respuesta : Objeto con propiedades código y mensaje. Si el codigo es distinto de OK, se debe suponer que el mensaje 
+es un error controlado por la aplicación
+Cupones : listado con los cupones disponibles
+
+
+
++ Request (application/json)
+
+        {
+            "local": "Identificacion del local",
+            "rutCliente": "Identificacion del Cliente",
+            "numeroAtencion": "V0001"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "respuesta": {
+                "codigo": "OK",
+                "mensaje": "NUMERO ATENCION CANCELADO OK"
+            }
+            "cupones" : [
+                  {
+                     "customer_id":"9475050-4"
+                    ,"id":6
+                    ,"descricion_promocion":"de descuento en vestuario Hombre, Mujer y Niños."
+                    ,"valido_desde":"2018-05-09"
+                    ,"valido_hasta":"2018-06-08"
+                    ,"codigo_promocion":1090831
+                    ,"nombre_tienda":"FALABELLA LYON"
+                    ,"titulo_promocion":"20% CC C Pers (vest HMN)"
+                    ,"restricciones_promocion":""
+                    ,"cupon_descuento":20
+                    ,"operacion_promocion":"CYC - % de descuento"
+                    ,"cupon_compra_minima":""
+                    ,"ref":"1"
+                    ,"numero_cupon":990000000000001802011812311090830131713352
+                    ,"numf12":"144015383162"
+                    ,"estado":"disponible"
+                    ,"oc":5135378505
+                  },
+                  {
+                     "customer_id":"9475050-4"
+                    ,"id":7
+                    ,"descricion_promocion":"de descuento en vestuario Hombre, Mujer y Niños."
+                    ,"valido_desde":"2018-05-09"
+                    ,"valido_hasta":"2018-06-08"
+                    ,"codigo_promocion":1090831
+                    ,"nombre_tienda":"FALABELLA LYON"
+                    ,"titulo_promocion":"20% CC C Pers (vest HMN)"
+                    ,"restricciones_promocion":""
+                    ,"cupon_descuento":20
+                    ,"operacion_promocion":"CYC - % de descuento"
+                    ,"cupon_compra_minima":""
+                    ,"ref":"1"
+                    ,"numero_cupon":990000000000001802011812311090830131713352
+                    ,"numf12":"144015383162"
+                    ,"estado":"disponible"
+                    ,"oc":5135378505
+                  }
+                ]
         }
