@@ -5,7 +5,7 @@ HOST: http://localhost:8080/turneroWeb
 
 Requerimiento Turnero y Cupón a través de Mobile
 
-## Estado de Turnero  [/getStatusTienda]
+## Estado de Tienda  [/getStatusTienda]
 
 ### Obtener estado [POST]
 
@@ -35,7 +35,7 @@ Status : ABIERTA / CERRADA
                 "codigo": "OK",
                 "mensaje": "STATUS OK"
             },
-            "status": "ACTIVO"
+            "status": "ABIERTA"
         }
 
 
@@ -54,7 +54,7 @@ Local : de largo de 4 digitos
 Respuesta : Objeto con propiedades codigo y mensaje. Si el codigo es distinto de OK, se debe suponer que el mensaje 
 es un error controlado por la aplicación
 
-Status : ACTIVO / NO_ACTIVO
+Status : ACTIVO / DESACTIVADO
 
 + Request (application/json)
 
@@ -213,42 +213,22 @@ Cupones : listado con los cupones disponibles
             }
             "cupones" : [
                   {
-                     "customer_id":"9475050-4"
-                    ,"id":6
-                    ,"descricion_promocion":"de descuento en vestuario Hombre, Mujer y Niños."
-                    ,"valido_desde":"2018-05-09"
-                    ,"valido_hasta":"2018-06-08"
-                    ,"codigo_promocion":1090831
+                     "rutCliente":"9475050-4"
+                    ,"nombreCliente": "Liliana"
+                    ,"apellidoCliente": "Villaroel"
+                    ,"fechaVencimiento":"2018-06-08"
                     ,"nombre_tienda":"FALABELLA LYON"
-                    ,"titulo_promocion":"20% CC C Pers (vest HMN)"
-                    ,"restricciones_promocion":""
-                    ,"cupon_descuento":20
-                    ,"operacion_promocion":"CYC - % de descuento"
-                    ,"cupon_compra_minima":""
-                    ,"ref":"1"
                     ,"numero_cupon":990000000000001802011812311090830131713352
-                    ,"numf12":"144015383162"
                     ,"estado":"disponible"
-                    ,"oc":5135378505
                   },
                   {
-                     "customer_id":"9475050-4"
-                    ,"id":7
-                    ,"descricion_promocion":"de descuento en vestuario Hombre, Mujer y Niños."
-                    ,"valido_desde":"2018-05-09"
-                    ,"valido_hasta":"2018-06-08"
-                    ,"codigo_promocion":1090831
+                     "rutCliente":"9475050-4"
+                    ,"nombreCliente": "Liliana"
+                    ,"apellidoCliente": "Villaroel"
+                    ,"fechaVencimiento":"2018-06-08"
                     ,"nombre_tienda":"FALABELLA LYON"
-                    ,"titulo_promocion":"20% CC C Pers (vest HMN)"
-                    ,"restricciones_promocion":""
-                    ,"cupon_descuento":20
-                    ,"operacion_promocion":"CYC - % de descuento"
-                    ,"cupon_compra_minima":""
-                    ,"ref":"1"
                     ,"numero_cupon":990000000000001802011812311090830131713352
-                    ,"numf12":"144015383162"
                     ,"estado":"disponible"
-                    ,"oc":5135378505
                   }
                 ]
         }
