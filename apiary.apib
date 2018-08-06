@@ -88,6 +88,7 @@ rutCliente : sin formato (sin puntos ni guiones)
 
 Respuesta : Objeto con propiedades código y mensaje. Si el codigo es distinto de OK, se debe suponer que el mensaje 
 es un error controlado por la aplicación
+
 numeroAtencion : Número de Atención entregado por el negocio al cliente que lo solicita
 
 + Request (application/json)
@@ -122,6 +123,7 @@ rutCliente : sin formato (sin puntos ni guiones)
 
 Respuesta : Objeto con propiedades código y mensaje. Si el codigo es distinto de OK, se debe suponer que el mensaje 
 es un error controlado por la aplicación
+
 numeroAtencion : Número de Atención 
 
 + Request (application/json)
@@ -177,9 +179,9 @@ es un error controlado por la aplicación
         }
         
         
-## Cancelar Número de Atención [/getCupones]
+## Obtener Cupones del Cliente [/getCupones]
 
-### Cancelar Número de Atención [POST]
+### Obtener cupones [POST]
 
 Servicio permite solicitar un listado con los cupones disponibles por el Cliente
 
@@ -190,10 +192,9 @@ rutCliente : sin formato (sin puntos ni guiones)
 #### Parametros de Salida 
 
 Respuesta : Objeto con propiedades código y mensaje. Si el codigo es distinto de OK, se debe suponer que el mensaje 
-es un error controlado por la aplicación
+es un error controlado por la aplicación 
+
 Cupones : listado con los cupones disponibles
-
-
 
 + Request (application/json)
 
