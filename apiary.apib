@@ -1,0 +1,99 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# TurneroMobile
+
+Requerimiento Turnero y Cupón a través de Mobile
+
+## Estado de Turnero  [/turnero/getStatus]
+
+### Obtener estado [POST]
+
+Servicio permite obtener el estado del Turnero del local solicitado
+
++ Request (application/json)
+
+        {
+            "local": "Identificacion del local"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "respuesta": {
+                "codigo": "OK",
+                "mensaje": "STATUS OK"
+            },
+            "status": "ACTIVO"
+        }
+        
+
+## Número de Atención [/turnero/getNumeroAtencion]
+
+### Obtener Número de Atención [POST]
+
+Servicio permite obtener un número de Atención del local solicitado
+
++ Request (application/json)
+
+        {
+            "local": "Identificacion del local",
+            "rutCliente": "Identificacion del Cliente"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "respuesta": {
+                "codigo": "OK",
+                "mensaje": "NUMERO ATENCION OK"
+            },
+            "numeroAtención": "V0001"
+        }
+
+## Reactivar Número de Atención [/turnero/setReactivarNumeroAtencion]
+
+### Reactivar Número de Atención [POST]
+
+Servicio permite reactivar un número de Atención solicitado con anterioridad por el cliente
+
++ Request (application/json)
+
+        {
+            "local": "Identificacion del local",
+            "rutCliente": "Identificacion del Cliente"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "respuesta": {
+                "codigo": "OK",
+                "mensaje": "NUMERO ATENCION REACTIVADO OK"
+            },
+            "numeroAtención": "V0001"
+        }
+
+## Cancelar Número de Atención [/turnero/setCancelarNumeroAtencion]
+
+### Cancelar Número de Atención [POST]
+
+Servicio permite cancelar un número de Atención solicitado con anterioridad por el cliente
+
++ Request (application/json)
+
+        {
+            "local": "Identificacion del local",
+            "rutCliente": "Identificacion del Cliente",
+            "numeroAtencion": "V0001"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "respuesta": {
+                "codigo": "OK",
+                "mensaje": "NUMERO ATENCION CANCELADO OK"
+            },
+            "numeroAtención": "V0001"
+        }
