@@ -5,37 +5,68 @@ HOST: http://localhost:8080/turneroWeb
 
 Requerimiento Turnero y Cupón a través de Mobile
 
-## Estado de Tienda  [/getStatusTienda]
+## Estado de Tienda  [/getStatusStore]
 
-### Obtener estado [POST]
+### Obtener estado de la Tienda [POST]
 
 Servicio permite obtener el estado de Atención de la Tienda solicitada
 
 #### Parametros de Entrada 
 
-Local : de largo de 4 digitos
+channel : canal
+
+source : fuente
+
+country : pais
+
+local : de largo de 4 digitos
 
 #### Parametros de Salida 
 
 Respuesta : Objeto con propiedades codigo y mensaje. Si el codigo es distinto de OK, se debe suponer que el mensaje 
 es un error controlado por la aplicación
 
-Status : ABIERTA / CERRADA
+StatusStore : ABIERTA / CERRADA
+
+hourOpen : Hora de Apertura (24H)
+
+hourClose : Hora de Cierre (24H)
+
+turneros : Lista con la ubicacion y estado de los turneros
+
+
+
+#####
+
 
 + Request (application/json)
 
         {
+            "channel": "Identificacion del canal",
+            "source": "Identificacion de la fuente",
+            "country": "Identificacion del pais",
             "local": "Identificacion del local"
         }
 
 + Response 200 (application/json)
 
         {
-            "respuesta": {
-                "codigo": "OK",
-                "mensaje": "STATUS OK"
+            "response": {
+                "code": "OK",
+                "message": "STATUS OK"
             },
-            "status": "ABIERTA"
+            "statusStore": "ABIERTA"
+            "hourOpen": "09:00:00",
+            "hourClose": "20:00:00" 
+            "turneros" : [{
+                "ubication" : "",
+                "location"  : "",
+                "status"    : ""
+            },{
+                "ubication" : "",
+                "location"  : "",
+                "status"    : ""
+            }]
         }
 
 
@@ -47,33 +78,50 @@ Servicio permite obtener el estado del Turnero del local solicitado
 
 #### Parametros de Entrada 
 
-Local : de largo de 4 digitos
+channel : canal
+
+source : fuente
+
+country : pais
+
+local : de largo de 4 digitos
 
 #### Parametros de Salida 
 
 Respuesta : Objeto con propiedades codigo y mensaje. Si el codigo es distinto de OK, se debe suponer que el mensaje 
 es un error controlado por la aplicación
 
-Status : ACTIVO / DESACTIVADO
+status : ACTIVO / DESACTIVADO
+
+ubication : ubicacion
+
+location : locacion
+
+##### 
 
 + Request (application/json)
 
         {
+            "channel": "Identificacion del canal",
+            "source": "Identificacion de la fuente",
+            "country": "Identificacion del pais",
             "local": "Identificacion del local"
         }
 
 + Response 200 (application/json)
 
         {
-            "respuesta": {
-                "codigo": "OK",
-                "mensaje": "STATUS OK"
+            "response": {
+                "code": "OK",
+                "message": "STATUS OK"
             },
-            "status": "ACTIVO"
+            "status": "ACTIVO",
+            "ubication" : "",
+            "location"  : ""
         }
         
 
-## Número de Atención [/getNumeroAtencion]
+## Número de Atención [/getAttentionNumber]
 
 ### Obtener Número de Atención [POST]
 
@@ -81,7 +129,16 @@ Servicio permite obtener un número de Atención del local solicitado
 
 #### Parametros de Entrada 
 
-Local : de largo de 4 digitos
+channel : canal
+
+source : fuente
+
+country : pais
+
+local : de largo de 4 digitos
+
+turneroInfo : informacion de turnero
+
 rutCliente : sin formato (sin puntos ni guiones)
 
 #### Parametros de Salida 
@@ -91,24 +148,33 @@ es un error controlado por la aplicación
 
 numeroAtencion : Número de Atención entregado por el negocio al cliente que lo solicita
 
+#####
+
 + Request (application/json)
 
         {
+            "channel": "Identificacion del canal",
+            "source": "Identificacion de la fuente",
+            "country": "Identificacion del pais",
             "local": "Identificacion del local",
+            "turneroInfo" : {
+                                "ubication" : "",
+                                "location"  : ""
+                            },
             "rutCliente": "Identificacion del Cliente"
         }
 
 + Response 200 (application/json)
 
         {
-            "respuesta": {
-                "codigo": "OK",
-                "mensaje": "NUMERO ATENCION OK"
+            "response": {
+                "code": "OK",
+                "message": "NUMERO ATENCION OK"
             },
-            "numeroAtencion": "V0001"
+            "attentionNumber": "V0001"
         }
 
-## Reactivar Número de Atención [/setReactivarNumeroAtencion]
+## Reactivar Número de Atención [/setActivateAttentionNumber]
 
 ### Reactivar Número de Atención [POST]
 
@@ -116,8 +182,17 @@ Servicio permite reactivar un número de Atención solicitado con anterioridad p
 
 #### Parametros de Entrada 
 
-Local : de largo de 4 digitos
+channel : canal
+
+source : fuente
+
+country : pais
+
+local : de largo de 4 digitos
+
 rutCliente : sin formato (sin puntos ni guiones)
+
+attentionNumber: numero de atencion
 
 #### Parametros de Salida 
 
@@ -126,24 +201,31 @@ es un error controlado por la aplicación
 
 numeroAtencion : Número de Atención 
 
+#####
+
 + Request (application/json)
 
         {
+            "channel": "Identificacion del canal",
+            "source": "Identificacion de la fuente",
+            "country": "Identificacion del pais",
             "local": "Identificacion del local",
             "rutCliente": "Identificacion del Cliente"
+            "attentionNumber": "Numero de Atencion"
         }
 
 + Response 200 (application/json)
 
         {
-            "respuesta": {
-                "codigo": "OK",
-                "mensaje": "NUMERO ATENCION REACTIVADO OK"
+            "response": {
+                "code": "OK",
+                "message": "NUMERO ATENCION REACTIVADO OK"
             },
-            "numeroAtención": "V0001"
+            "attentionNumber": "V0001",
+            "numberAttemps": 0
         }
 
-## Cancelar Número de Atención [/setCancelarNumeroAtencion]
+## Cancelar Número de Atención [/setCancelAttentionNumber]
 
 ### Cancelar Número de Atención [POST]
 
@@ -152,21 +234,24 @@ Servicio permite cancelar un número de Atención solicitado con anterioridad po
 #### Parametros de Entrada 
 
 Local : de largo de 4 digitos
-rutCliente : sin formato (sin puntos ni guiones)
-numeroAtencion : Número de Atención entregado previamente por la aplicación 
+
+clientId :  corresponde al Rut del Cliente, sin formato (sin puntos ni guiones)
+
+attentionNumber : Número de Atención entregado previamente por la aplicación 
 
 #### Parametros de Salida 
 
 Respuesta : Objeto con propiedades código y mensaje. Si el codigo es distinto de OK, se debe suponer que el mensaje 
 es un error controlado por la aplicación
 
+#####
 
 + Request (application/json)
 
         {
             "local": "Identificacion del local",
-            "rutCliente": "Identificacion del Cliente",
-            "numeroAtencion": "V0001"
+            "clientID": "Identificacion del Cliente",
+            "attentionNumber": "V0001"
         }
 
 + Response 200 (application/json)
@@ -179,7 +264,7 @@ es un error controlado por la aplicación
         }
         
         
-## Obtener Cupones del Cliente [/getCupones]
+## Obtener Cupones de Descuento del Cliente [/getCoupons]
 
 ### Obtener cupones [POST]
 
@@ -194,39 +279,64 @@ rutCliente : sin formato (sin puntos ni guiones)
 Respuesta : Objeto con propiedades código y mensaje. Si el codigo es distinto de OK, se debe suponer que el mensaje 
 es un error controlado por la aplicación 
 
-Cupones : listado con los cupones disponibles
+coupons : Listado con los cupones disponibles
+
+firstName : Nombre del cliente
+
+lastName : Apellido del cliente
+
+pactedDate : Fecha pactada
+
+validDays : Días validos del cupon asignados por país
+
+storeName : Nombre de la tienda
+
+cuponNumber : Número del cupon
+
+status : Estado del cupon
+
+discountCoupon : Valor de descuento del cupon
+
+promotionDesc : Descripción de la promoción
+
+promotionCode : Código de la promoción
+
+#####
 
 + Request (application/json)
 
         {
-            "rutCliente": "Identificacion del Cliente",
+            "clientID": "Identificacion del Cliente",
         }
 
 + Response 200 (application/json)
 
         {
-            "respuesta": {
-                "codigo": "OK",
-                "mensaje": "CUPONES CLIENTES OK"
-            }
-            "cupones" : [
+            "response": {
+                "code": "OK",
+                "message": "NUMERO ATENCION CANCELADO OK"
+            },
+            "firstName": "Liliana",
+            "lastName": "Villaroel",
+            "coupons" : [
                   {
-                     "rutCliente":"9475050-4"
-                    ,"nombreCliente": "Liliana"
-                    ,"apellidoCliente": "Villaroel"
-                    ,"fechaVencimiento":"2018-06-08"
-                    ,"nombre_tienda":"FALABELLA LYON"
-                    ,"numero_cupon":"990000000000001802011812311090830131713352"
-                    ,"estado":"disponible"
+                    ,"pactedDate":"2018-06-08",
+                    ,"validDays" : 3,
+                    ,"storeName":"FALABELLA LYON",
+                    ,"cuponNumber": "990000000000001802011812311090830131713352",
+                    ,"status":"disponible",
+                    ,"discountCoupon": 20,
+                    ,"promotionDesc" : "de descuento en vestuario Hombre, Mujer y Niños",
+                    ,"promotionCode" : 1090831
                   },
                   {
-                     "rutCliente":"9475050-4"
-                    ,"nombreCliente": "Liliana"
-                    ,"apellidoCliente": "Villaroel"
-                    ,"fechaVencimiento":"2018-06-08"
-                    ,"nombre_tienda":"FALABELLA LYON"
-                    ,"numero_cupon":"990000000000001802011812311090830131713352"
-                    ,"estado":"disponible"
+                    ,"expiredDate":"2018-06-08",
+                    ,"storeName":"FALABELLA LYON",
+                    ,"cuponNumber" : "990000000000001802011812311090830131713352",
+                    ,"status":"disponible",
+                    ,"discountCoupon": 20,
+                    ,"promotionDesc" : "de descuento en vestuario Hombre, Mujer y Niños",
+                    ,"promotionCode" : 1090831
                   }
                 ]
         }
