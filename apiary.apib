@@ -140,7 +140,7 @@ local : de largo de 4 digitos
 
 turneroInfo : informacion de turnero
 
-rutCliente : sin formato (sin puntos ni guiones)
+clientID : Rut del Cliente, sin formato (sin puntos ni guiones)
 
 #### Parametros de Salida 
 
@@ -161,7 +161,7 @@ numeroAtencion : Número de Atención entregado por el negocio al cliente que lo
                                 "ubication" : "",
                                 "location"  : ""
                             },
-            "rutCliente": "Identificacion del Cliente"
+            "clientID": "Identificacion del Cliente"
         }
 
 + Response 200 (application/json)
@@ -190,7 +190,7 @@ country : pais
 
 local : de largo de 4 digitos
 
-rutCliente : sin formato (sin puntos ni guiones)
+clientID : RUT del Cliente, sin formato (sin puntos ni guiones)
 
 attentionNumber: numero de atencion
 
@@ -209,7 +209,7 @@ numeroAtencion : Número de Atención
             "source": "Identificacion de la fuente",
             "country": "Identificacion del pais",
             "local": "Identificacion del local",
-            "rutCliente": "Identificacion del Cliente"
+            "clientID": "Identificacion del Cliente"
             "attentionNumber": "Numero de Atencion"
         }
 
@@ -234,7 +234,7 @@ Servicio permite cancelar un número de Atención solicitado con anterioridad po
 
 Local : de largo de 4 digitos
 
-clientId :  corresponde al Rut del Cliente, sin formato (sin puntos ni guiones)
+clientID :  Rut del Cliente, sin formato (sin puntos ni guiones)
 
 attentionNumber : Número de Atención entregado previamente por la aplicación 
 
@@ -271,7 +271,7 @@ Servicio permite solicitar un listado con los cupones disponibles por el Cliente
 
 #### Parametros de Entrada 
 
-rutCliente : sin formato (sin puntos ni guiones)
+clientID : RUT del cliente, sin formato (sin puntos ni guiones)
 
 #### Parametros de Salida 
 
@@ -299,7 +299,6 @@ discountCoupon : Valor de descuento del cupon
 promotionDesc : Descripción de la promoción
 
 promotionCode : Código de la promoción
-
 
 
 + Request (application/json)
