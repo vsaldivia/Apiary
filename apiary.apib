@@ -19,7 +19,7 @@ source : fuente
 
 country : pais
 
-local : de largo de 4 digitos
+localId : de largo de 4 digitos
 
 #### Parametros de Salida 
 
@@ -141,11 +141,11 @@ source : fuente
 
 country : pais
 
-local : de largo de 4 digitos
+localId : de largo de 4 digitos
 
-turneroInfo : informacion de turnero
+turneroId : de largo de 4 digitos
 
-clientID : Rut del Cliente, sin formato (sin puntos ni guiones)
+clientId : Rut del Cliente, sin formato (sin puntos ni guiones)
 
 #### Parametros de Salida 
 
@@ -161,13 +161,9 @@ numeroAtencion : Número de Atención entregado por el negocio al cliente que lo
             "channel": "Identificacion del canal",
             "source": "Identificacion de la fuente",
             "country": "Identificacion del pais",
-            "local": "Identificacion del local",
-            "turneroInfo" : {
-                                "turneroId": "",
-                                "ubication" : "",
-                                "location"  : ""
-                            },
-            "clientID": "Identificacion del Cliente"
+            "localId": "Identificacion del local",
+            "turneroId" : "Identificacion del Turnero",
+            "clientId": "Identificacion del Cliente"
         }
 
 + Response 200 (application/json)
@@ -194,9 +190,11 @@ source : fuente
 
 country : pais
 
-local : de largo de 4 digitos
+localID : de largo de 4 digitos
 
-clientID : RUT del Cliente, sin formato (sin puntos ni guiones)
+turneroId : de largo de 4 digitos
+
+clientId : RUT del Cliente, sin formato (sin puntos ni guiones)
 
 attentionNumber: numero de atencion
 
@@ -214,8 +212,9 @@ numeroAtencion : Número de Atención
             "channel": "Identificacion del canal",
             "source": "Identificacion de la fuente",
             "country": "Identificacion del pais",
-            "local": "Identificacion del local",
-            "clientID": "Identificacion del Cliente"
+            "localId": "Identificacion del local",
+            "turneroId" : "Identificacion del Turnero",
+            "clientId": "Identificacion del Cliente",
             "attentionNumber": "Numero de Atencion"
         }
 
@@ -238,7 +237,9 @@ Servicio permite cancelar un número de Atención solicitado con anterioridad po
 
 #### Parametros de Entrada 
 
-Local : de largo de 4 digitos
+LocalId : de largo de 4 digitos
+
+turneroId : de largo de 4 digitos
 
 clientID :  Rut del Cliente, sin formato (sin puntos ni guiones)
 
@@ -255,6 +256,7 @@ es un error controlado por la aplicación
 
         {
             "local": "Identificacion del local",
+            "turneroId" : "Identificacion del Turnero",
             "clientID": "Identificacion del Cliente",
             "attentionNumber": "V0001"
         }
@@ -277,7 +279,7 @@ Servicio permite solicitar un listado con los cupones disponibles por el Cliente
 
 #### Parametros de Entrada 
 
-clientID : RUT del cliente, sin formato (sin puntos ni guiones)
+clientId : RUT del cliente, sin formato (sin puntos ni guiones)
 
 #### Parametros de Salida 
 
@@ -310,7 +312,7 @@ promotionCode : Código de la promoción
 + Request (application/json)
 
         {
-            "clientID": "Identificacion del Cliente",
+            "clientId": "Identificacion del Cliente",
         }
 
 + Response 200 (application/json)
@@ -318,7 +320,7 @@ promotionCode : Código de la promoción
         {
             "response": {
                 "code": "OK",
-                "message": "NUMERO ATENCION CANCELADO OK"
+                "message": "CUPONES OK"
             },
             "firstName": "Liliana",
             "lastName": "Villaroel",
