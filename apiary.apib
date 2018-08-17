@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://localhost:8080/turneroWeb
+HOST: http://localhost:8080/turneroWeb/mobile
 
 # TurneroMobile
 
@@ -46,7 +46,7 @@ status : Estado del turnero
             "channel": "Identificacion del canal",
             "source": "Identificacion de la fuente",
             "country": "Identificacion del pais",
-            "local": "Identificacion del local"
+            "localId": "Identificacion del local"
         }
 
 + Response 200 (application/json)
@@ -60,10 +60,12 @@ status : Estado del turnero
             "hourOpen": "09:00:00",
             "hourClose": "20:00:00" 
             "turneros" : [{
+                "turneroId" : "",
                 "ubication" : "",
                 "location"  : "",
                 "status"    : "ACTIVO"
             },{
+                "turneroId" : "",
                 "ubication" : "",
                 "location"  : "",
                 "status"    : "ACTIVO"
@@ -85,7 +87,9 @@ source : fuente
 
 country : pais
 
-local : de largo de 4 digitos
+localId : de largo de 4 digitos
+
+turneroId : de largo de 4 digitos
 
 #### Parametros de Salida 
 
@@ -106,7 +110,8 @@ status : Estado del turnero
             "channel": "Identificacion del canal",
             "source": "Identificacion de la fuente",
             "country": "Identificacion del pais",
-            "local": "Identificacion del local"
+            "localId": "Identificacion del local",
+            "turneroId": "Identificacion del Turnero"
         }
 
 + Response 200 (application/json)
@@ -158,6 +163,7 @@ numeroAtencion : Número de Atención entregado por el negocio al cliente que lo
             "country": "Identificacion del pais",
             "local": "Identificacion del local",
             "turneroInfo" : {
+                                "turneroId": "",
                                 "ubication" : "",
                                 "location"  : ""
                             },
