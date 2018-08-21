@@ -182,8 +182,6 @@ localID : de largo de 4 digitos
 
 clientId : RUT del Cliente, sin formato (sin puntos ni guiones)
 
-attentionNumber: numero de atencion
-
 #### Parametros de Salida 
 
 Respuesta : Objeto con propiedades código y mensaje. Si el codigo es distinto de OK, se debe suponer que el mensaje 
@@ -199,8 +197,7 @@ numeroAtencion : Número de Atención
             "source": "Identificacion de la fuente",
             "country": "Identificacion del pais",
             "localId": "Identificacion del local",
-            "clientId": "Identificacion del Cliente",
-            "attentionNumber": "Numero de Atencion"
+            "clientId": "Identificacion del Cliente"
         }
 
 + Response 200 (application/json)
@@ -210,7 +207,7 @@ numeroAtencion : Número de Atención
                 "code": "OK",
                 "message": "NUMERO ATENCION REACTIVADO OK"
             },
-            "attentionNumber": "V0001",
+            "attentionNumber": "V001",
             "numberAttemps": 0
         }
 
@@ -226,8 +223,6 @@ LocalId : de largo de 4 digitos
 
 clientID :  Rut del Cliente, sin formato (sin puntos ni guiones)
 
-attentionNumber : Número de Atención entregado previamente por la aplicación 
-
 #### Parametros de Salida 
 
 Respuesta : Objeto con propiedades código y mensaje. Si el codigo es distinto de OK, se debe suponer que el mensaje 
@@ -239,8 +234,7 @@ es un error controlado por la aplicación
 
         {
             "localId": "Identificacion del local",
-            "clientId": "Identificacion del Cliente",
-            "attentionNumber": "V0001"
+            "clientId": "Identificacion del Cliente"
         }
 
 + Response 200 (application/json)
